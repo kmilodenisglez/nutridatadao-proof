@@ -83,14 +83,14 @@ class Proof:
                         self.proof_response.ownership * 0.1
                     )
 
-                    # Additional (public) properties to include in the proof about the data
-                    self.proof_response.attributes = {
-                        'schema_type': schema_type,
-                        'user_email': input_data.get('email'),
-                        'user_id': input_data.get('userId'),
-                        'profile_name': input_data.get('profile', {}).get('name'),
-                        'verified_with_oauth': google_user is not None
-                    }
+                    # # Additional (public) properties to include in the proof about the data
+                    # self.proof_response.attributes = {
+                    #     'schema_type': schema_type,
+                    #     'user_email': input_data.get('email'),
+                    #     'user_id': input_data.get('userId'),
+                    #     'profile_name': input_data.get('profile', {}).get('name'),
+                    #     'verified_with_oauth': google_user is not None
+                    # }
                     
                     # Additional metadata about the proof, written onchain
                     self.proof_response.metadata = {

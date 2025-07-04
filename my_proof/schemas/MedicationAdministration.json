@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MedicationAdministration Schema",
+  "type": "object",
+  "required": ["id", "resourceType", "status", "medicationCodeableConcept", "subject"],
+  "description": "Describes the event of a patient consuming or otherwise being administered a medication. This may be as simple as swallowing a tablet or it may be a long running infusion. Related resources tie this event to the authorizing prescription, and the specific encounter between patient and health care practitioner.",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Logical id of this artifact"
+    },
+    "resourceType": {
+      "const": "MedicationAdministration"
+    },
+    "status": {
+      "const": "completed",
+      "description": "Will generally be set to show that the administration has been completed. For some long running administrations such as infusions, it is possible for an administration to be started but not completed or it may be paused while some other process is under way."
+    },
+    "medication": {
+      "type": "object",
+      "required": ["concept"],
+      "description": "What was administered",
+      "properties": {
+        "concept": {
+          "type": "object",
+          "required": ["coding", "text"],
+          "description": "A reference to a concept - e.g. the information is identified by its general class to the degree of precision found in the terminology.",
+          "properties": {
+            "coding": {
+              "type": "array",
+              "description": "A reference to a code defined by a terminology system.",
+              "items": {
+                "type": "object",
+                "required": ["system", "code"],
+                "description": "Identity of the terminology system",
+                "properties": {
+                  "system": {
+                    "const": "http://www.nutridao.com/fhir/supplement"
+                  },
+                  "code": {
+                    "type": "string",
+                    "description": "Symbol in syntax defined by the system"
+                  },
+                  "display": {
+                    "type": "string",
+                    "description": "Representation defined by the system"
+                  }
+                }
+              }
+            },
+            "text": {
+              "type": "string",
+              "description": "Plain text representation of the concept"
+            }
+          }
+        }
+      }
+    },
+    "subject": {
+      "type": "object",
+      "required": ["reference"],
+      "description": "Who received medication",
+      "properties": {
+        "reference": {
+          "type": "string",
+          "description": "Literal reference, Relative, internal or absolute URL"
+        },
+        "display": {
+          "type": "string",
+          "description": "Text alternative for the resource reference"
+        }
+      }
+    }
+  }
+} 

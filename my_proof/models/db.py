@@ -1,4 +1,4 @@
-"""SQLAlchemy database models for storing Spotify contribution data"""
+"""SQLAlchemy database models for storing nutritional supplement contribution data"""
 import datetime
 
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Float, DateTime, UniqueConstraint, ARRAY
